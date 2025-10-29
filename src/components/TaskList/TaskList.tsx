@@ -1,9 +1,23 @@
 import type { TaskListProps } from "../../types";
+import TaskItem from "../TaskItem/TaskItem";
 
 export default function TaskList({
-	task,
+	tasks,
 	onStatusChange,
 	onDelete,
 }: TaskListProps) {
-	return <h1>Hello YOu!</h1>;
+	return (
+		<>
+			{tasks.map((item) => {
+				return (
+					<TaskItem
+						key={item.id}
+						task={item}
+						onStatusChange={onStatusChange}
+						onDelete={onDelete}
+					/>
+				);
+			})}
+		</>
+	);
 }

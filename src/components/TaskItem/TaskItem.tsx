@@ -1,4 +1,4 @@
-import type { TaskItemProps, Task } from "../../types";
+import type { TaskItemProps } from "../../types";
 
 export default function TaskItem({
 	task,
@@ -29,13 +29,14 @@ export default function TaskItem({
 				<select
 					id="optionsSelect"
 					value={task.status}
-					// onChange={(task.id, task.status)=>onStatusChange()}
-				>
+					onChange={() => onStatusChange(task.id, task.status)}>
 					<option value="option1">Option 1</option>
 					<option value="option2">Option 2</option>
 					<option value="option3">Option 3</option>
 				</select>
-				<p className="text-red-500 hover:text-red-700" onClick={onDelete}>
+				<p
+					className="text-red-500 hover:text-red-700"
+					onClick={() => onDelete(task.id)}>
 					Delete
 				</p>
 			</div>

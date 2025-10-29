@@ -49,10 +49,9 @@ function App() {
 	]);
 
 	return (
-		<>
-			{" "}
-			<h1>Hello</h1>
-		</>
+		<main className="bg-slate-300">
+			<section className="h-screen max-w-[85rem] mx-auto flex flex-col p-4"></section>
+		</main>
 	);
 }
 

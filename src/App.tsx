@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { Task } from "./types";
+import type { Task, TaskStatus } from "./types";
+import TaskList from "./components/TaskList/TaskList";
 
 function App() {
 	const [tasks, setTasks] = useState<Task[]>([
@@ -48,9 +49,22 @@ function App() {
 		},
 	]);
 
+	const onStatusChange = (id: string, newStatus: TaskStatus) => {
+		console.log("Delete");
+	};
+	const onDelete = (id: string) => {
+		console.log("Delete");
+	};
+
 	return (
-		<main className="bg-slate-300">
-			<section className="h-screen max-w-[85rem] mx-auto flex flex-col p-4"></section>
+		<main className="bg-slate-600">
+			<section className="h-screen max-w-[85rem] mx-auto flex flex-col p-4 py-8">
+				<TaskList
+					tasks={tasks}
+					onStatusChange={onStatusChange}
+					onDelete={onDelete}
+				/>
+			</section>
 		</main>
 	);
 }

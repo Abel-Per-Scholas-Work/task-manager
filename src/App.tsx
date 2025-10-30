@@ -49,8 +49,15 @@ function App() {
 		},
 	]);
 
-	const onStatusChange = (id: string, newStatus: TaskStatus) => {
-		console.log("change", id, newStatus);
+	const onStatusChange = (id: string, newStatus: TaskStatus): void => {
+		const updatedTask = tasks.map((task) => {
+			console.log(task);
+			return task.id === id ? { ...task, status: newStatus } : task;
+		});
+
+		console.log(updatedTask);
+
+		setTasks(updatedTask);
 	};
 	const onDelete = (id: string) => {
 		const newTask = tasks.filter((task) => task.id !== id);

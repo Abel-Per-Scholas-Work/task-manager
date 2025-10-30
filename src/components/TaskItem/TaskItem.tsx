@@ -1,4 +1,5 @@
-import type { TaskItemProps } from "../../types";
+import type { TaskItemProps, TaskStatus } from "../../types";
+import React from "react";
 
 export default function TaskItem({
 	task,
@@ -35,7 +36,9 @@ export default function TaskItem({
 				<select
 					id="optionsSelect"
 					value={task.status}
-					onChange={() => onStatusChange(task.id, task.status)}
+					onChange={(e) =>
+						onStatusChange(task.id, e.target?.value as TaskStatus)
+					}
 					className={`${selectTheme[task.status]} p-2 rounded-lg`}>
 					<option value="pending" selected={task.status === "pending"}>
 						Pending

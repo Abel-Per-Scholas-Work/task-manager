@@ -40,9 +40,11 @@ export default function TaskList({
 	};
 
 	//update the
-	const onTaskListDelete = (id: string) => {
+	const onFilterListDelete = (id: string) => {
+		// update the filterList
 		const deletedList = filterList.filter((task) => task.id !== id);
 		setFilterList(deletedList);
+		//call the onDelete function from parent
 		onDelete(id);
 	};
 
@@ -59,7 +61,7 @@ export default function TaskList({
 							key={item.id}
 							task={item}
 							onStatusChange={onStatusChange}
-							onDelete={onTaskListDelete}
+							onDelete={onFilterListDelete}
 						/>
 					);
 				})}

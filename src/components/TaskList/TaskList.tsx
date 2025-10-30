@@ -67,16 +67,22 @@ export default function TaskList({
 			</div>
 
 			<div className="flex flex-col gap-y-4 ">
-				{filterList.map((item) => {
-					return (
-						<TaskItem
-							key={item.id}
-							task={item}
-							onStatusChange={onFilterListStatusChange}
-							onDelete={onFilterListDelete}
-						/>
-					);
-				})}
+				{filterList.length > 0 ? (
+					filterList.map((item) => {
+						return (
+							<TaskItem
+								key={item.id}
+								task={item}
+								onStatusChange={onFilterListStatusChange}
+								onDelete={onFilterListDelete}
+							/>
+						);
+					})
+				) : (
+					<p className="text-black text-center pt-8">
+						No tasks match the current filters
+					</p>
+				)}
 			</div>
 		</div>
 	);

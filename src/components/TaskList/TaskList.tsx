@@ -1,12 +1,16 @@
-import type { TaskListProps } from "../../types";
+import type { TaskListProps, Task } from "../../types";
 import TaskFilter from "../TaskFilter/TaskFilter";
 import TaskItem from "../TaskItem/TaskItem";
+import { useState } from "react";
 
 export default function TaskList({
 	tasks,
 	onStatusChange,
 	onDelete,
 }: TaskListProps) {
+	//viewed list
+	const [viewTasks, setViewTasks] = useState<Task[]>(tasks);
+
 	return (
 		<div>
 			<div>
@@ -14,7 +18,7 @@ export default function TaskList({
 			</div>
 
 			<div className="flex flex-col gap-y-4 ">
-				{tasks.map((item) => {
+				{viewTasks.map((item) => {
 					return (
 						<TaskItem
 							key={item.id}

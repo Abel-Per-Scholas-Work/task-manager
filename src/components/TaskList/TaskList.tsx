@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Task, TaskListProps, TaskStatus } from "../../types";
+import type { TaskListProps, TaskStatus } from "../../types";
 import TaskFilter from "../TaskFilter/TaskFilter";
 import TaskItem from "../TaskItem/TaskItem";
 
@@ -39,13 +39,25 @@ export default function TaskList({
 		setFilterList(result);
 	};
 
-	//update the
+	//delete and update FilterList and tasks
 	const onFilterListDelete = (id: string) => {
 		// update the filterList
 		const deletedList = filterList.filter((task) => task.id !== id);
 		setFilterList(deletedList);
 		//call the onDelete function from parent
 		onDelete(id);
+	};
+
+	//update the status and update the original  tasks
+	const onFilterListStatusChange = (id: string, newStatus: TaskStatus) => {
+		const updatedTask = filterList.map((task) => {
+			console.log(task);
+			return task.id === id ? { ...task, status: newStatus } : task;
+		});
+		//update the filterList
+		setFilterList(updatedTask);
+		// updated the original tasks
+		onStatusChange(id, newStatus);
 	};
 
 	return (
@@ -60,7 +72,7 @@ export default function TaskList({
 						<TaskItem
 							key={item.id}
 							task={item}
-							onStatusChange={onStatusChange}
+							onStatusChange={onFilterListStatusChange}
 							onDelete={onFilterListDelete}
 						/>
 					);

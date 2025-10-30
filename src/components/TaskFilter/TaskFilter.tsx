@@ -1,7 +1,7 @@
-import type { TaskItemProps } from "../../types";
+import type { TaskFilterProps } from "../../types";
 import React, { useState } from "react";
 
-export default function TaskItem({ onFilterChange }: TaskItemProps) {
+export default function TaskFilter() {
 	const [filter, setFilter] = useState({
 		status: "all-statuses",
 		priority: "all-priorities",
@@ -34,7 +34,7 @@ export default function TaskItem({ onFilterChange }: TaskItemProps) {
 				</select>
 			</div>
 			<div className=" flex flex-col gap-y-2 w-auto ">
-				<label htmlFor="status">Status</label>
+				<label htmlFor="status">Priority</label>
 				<select
 					id="optionsSelect"
 					value={filter.status}

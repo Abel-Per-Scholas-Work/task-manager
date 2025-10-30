@@ -50,10 +50,11 @@ function App() {
 	]);
 
 	const onStatusChange = (id: string, newStatus: TaskStatus) => {
-		console.log("Delete");
+		console.log("change", id, newStatus);
 	};
 	const onDelete = (id: string) => {
-		console.log("Delete");
+		const newTask = tasks.filter((task) => task.id !== id);
+		setTasks(newTask);
 	};
 
 	return (

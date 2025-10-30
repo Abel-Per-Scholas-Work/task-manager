@@ -13,7 +13,7 @@ export default function TaskList({
 	onStatusChange,
 	onDelete,
 }: TaskListProps) {
-	const [taskList, setTaskList] = useState(tasks);
+	const [filterList, setFilterList] = useState(tasks);
 
 	const onFilterChange = (filters: Filter) => {
 		console.log("these are the ", filters);
@@ -36,7 +36,14 @@ export default function TaskList({
 				}
 			});
 		}
-		setTaskList(result);
+		setFilterList(result);
+	};
+
+	//update the
+	const onTaskListDelete = (id: string) => {
+		const deletedList = filterList.filter((task) => task.id !== id);
+		setFilterList(deletedList);
+		onDelete(id);
 	};
 
 	return (
@@ -46,13 +53,13 @@ export default function TaskList({
 			</div>
 
 			<div className="flex flex-col gap-y-4 ">
-				{taskList.map((item) => {
+				{filterList.map((item) => {
 					return (
 						<TaskItem
 							key={item.id}
 							task={item}
 							onStatusChange={onStatusChange}
-							onDelete={onDelete}
+							onDelete={onTaskListDelete}
 						/>
 					);
 				})}

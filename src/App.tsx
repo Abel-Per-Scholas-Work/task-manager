@@ -3,7 +3,7 @@ import type { Task, TaskStatus } from "./types";
 import TaskList from "./components/TaskList/TaskList";
 
 function App() {
-	const [originalTasks, setOriginalTasks] = useState<Task[]>([
+	const [tasks, setTasks] = useState<Task[]>([
 		{
 			id: "1",
 			title: "Design landing page",
@@ -48,9 +48,6 @@ function App() {
 			dueDate: "2025-12-10",
 		},
 	]);
-
-	//viewed list
-	const [tasks, setTasks] = useState<Task[]>(originalTasks);
 
 	const onStatusChange = (id: string, newStatus: TaskStatus): void => {
 		const updatedTask = tasks.map((task) => {

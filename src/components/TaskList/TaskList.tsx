@@ -7,7 +7,7 @@ export default function TaskList({
 	onDelete,
 }: TaskListProps) {
 	return (
-		<>
+		<div className="flex flex-col gap-y-4 ">
 			{tasks.map((item) => {
 				return (
 					<TaskItem
@@ -18,6 +18,6 @@ export default function TaskList({
 					/>
 				);
 			})}
-		</>
+		</div>
 	);
 }

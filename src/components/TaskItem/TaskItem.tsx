@@ -19,7 +19,7 @@ export default function TaskItem({
 	};
 
 	return (
-		<div className="rounded-lg border border-orange-600 flex items-start p-4 bg-slate-900 text-white">
+		<div className="rounded-lg border border-gray-600 flex items-start p-6 bg-gray-800 text-white">
 			<div className="w-2/3 flex flex-col gap-y-2">
 				<h2 className="font-bold">{task.title}</h2>
 				<p>{task.description}</p>

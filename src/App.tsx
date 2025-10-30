@@ -57,7 +57,7 @@ function App() {
 	};
 
 	return (
-		<main className="bg-slate-600">
+		<main className="bg-slate-200">
 			<section className="h-screen max-w-[85rem] mx-auto flex flex-col p-4 py-8">
 				<TaskList
 					tasks={tasks}

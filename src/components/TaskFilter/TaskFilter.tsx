@@ -12,19 +12,12 @@ export default function TaskFilter({ onFilterChange }: TaskFilterProps) {
 		const newValue = value === "" ? undefined : value;
 		//create a new object
 		const newFilter = { ...filter, [name]: newValue };
-		//immediate update the state by passing a new object
+		//update the filter state
 		setFilter(newFilter);
 
 		console.log(newFilter);
+		//due to async nature of react, we are passing the const we made instead of the state.
 		onFilterChange(newFilter);
-
-		/**
-		 * delays the update of the state.
-		 */
-		// setFilter((prev) => ({ ...prev, [name]: value }));
-
-		// console.log(filter);
-		// onFilterChange(filter);
 	};
 
 	return (
